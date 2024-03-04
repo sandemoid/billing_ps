@@ -11,18 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $data  = User::get();
         return view('user.index', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $roles = Roles::all();
@@ -56,18 +54,13 @@ class UserController extends Controller
         return redirect()->route('user')->with('success', 'User with the name ' . $request->name . ' has been added');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Request $request, $id)
     {
         $data = User::find($id);
-        return view('user.edit', compact('data'));
+        $roles = Roles::all();
+        return view('user.edit', compact('data', 'roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -75,28 +68,31 @@ class UserController extends Controller
             'name' => 'required',
             'old_password' => $request->filled('old_password') ? 'required' : '',
             'new_password' => $request->filled('old_password') ? 'required' : '',
+            'role_id' => 'nullable|exists:roles,id_roles',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $data['email'] = $request->email;
         $data['name'] = $request->name;
 
-        // Periksa apakah old_password diisi
-        if ($request->filled('old_password')) {
-            // Pastikan old_password sesuai sebelum mengganti password
-            if (!Hash::check($request->old_password, auth()->user()->password)) {
-                return redirect()->back()->with('error', 'Old password is incorrect');
+        if ($request->filled('role_id')) {
+            $roleExists = Roles::where('id_roles', $request->role_id)->exists();
+            if (!$roleExists) {
+                return redirect()->back()->with('failed', 'Invalid role selected');
             }
 
-            // Ganti password hanya jika old_password sesuai dan new_password diisi
-            if ($request->filled('new_password')) {
-                $data['password'] = Hash::make($request->new_password);
-            } else {
-                return redirect()->back()->with('error', 'New password is required when changing the old password');
+            $data['role_id'] = $request->role_id;
+        }
+
+        if ($request->filled('old_password')) {
+            if (!Hash::check($request->old_password, auth()->user()->password)) {
+                return redirect()->back()->with('failed', 'Old password is incorrect');
             }
+
+            $data['password'] = Hash::make($request->new_password);
         }
 
         User::where('id', $id)->update($data);
@@ -104,9 +100,6 @@ class UserController extends Controller
         return redirect()->route('user')->with('success', 'User with the name ' . $request->name . ' has been updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(User $user, $id)
     {
         // Temukan pengguna
@@ -126,6 +119,6 @@ class UserController extends Controller
             return redirect()->route('user')->with('success', 'Has been deleted');
         }
 
-        return redirect()->route('user')->with('error', 'User not found');
+        return redirect()->route('user')->with('failed', 'User not found');
     }
 }

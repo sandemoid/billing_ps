@@ -1,10 +1,12 @@
 @extends('layout.main')
 @section('content')
+    @push('custom_style')
+        <link href="{{ asset('/') }}assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    @endpush
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">User</h1>
+            <h1 class="h3 mb-0 text-gray-800">Pengguna</h1>
             <button onclick="window.location='{{ route('user.add') }}'"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fa-solid fa-plus text-white-50"></i> Tambah Data
@@ -23,9 +25,9 @@
                             <tr>
                                 <th>NO</th>
                                 <th>Foto</th>
-                                <th>Name</th>
+                                <th>Nama</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,3 +87,10 @@
         </div>
     @endforeach
 @endsection
+
+@push('custom_scripts')
+    {{-- data table --}}
+    <script src="{{ asset('/') }}assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('/') }}assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('/') }}assets/js/demo/datatables-demo.js"></script>
+@endpush

@@ -1,3 +1,46 @@
 .form_password_delete{
     margin: 3px;
 }
+.img_monitor{
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.text_monitor{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; /* Ubah warna latar belakang sesuai kebutuhan */
+    padding: 5px 10px; /* Sesuaikan padding sesuai kebutuhan */
+    border-radius: 5px; /* Tambahkan border radius sesuai kebutuhan */
+}
+
+.dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Membuat dots menjadi bulat */
+}
+.green-dot {
+    background-color: rgb(0, 255, 0); /* Ubah warna dots menjadi hijau */
+}
+.red-dot {
+    background-color: rgb(255, 0, 0); /* Ubah warna dots menjadi hijau */
+}
+
+.top-right {
+    top: 15%;
+    right: 10%;
+}
+
+@media (max-width: 768px) {
+    .sidebar.toggled {
+        display: block !important;
+    }
+}
+.card-header{
+    display: flex !important; 
+    justify-content: space-between !important;
+}

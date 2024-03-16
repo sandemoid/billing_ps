@@ -38,18 +38,20 @@
                             <div class="col">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back, Gamers!</h1>
                                     </div>
                                     <form action="{{ route('authenticate') }}" method="POST" class="user">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email"
-                                                class="form-control form-control-user @error('email') is-invalid @enderror"
-                                                id="email" name="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." value="{{ old('email') }}">
-                                            @error('email')
+                                            <input type="text"
+                                                class="form-control form-control-user @error('credential') is-invalid @enderror"
+                                                id="credential" name="credential" aria-describedby="credentialHelp"
+                                                placeholder="Masukkan Email atau Nomor WhatsApp"
+                                                value="{{ old('credential') }}">
+                                            @error('credential')
                                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                                    {{ $message }}</div>
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
                                         <div class="form-group">

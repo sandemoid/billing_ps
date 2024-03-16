@@ -24,8 +24,8 @@
                         <thead>
                             <tr>
                                 <th>NO</th>
-                                <th>Foto</th>
                                 <th>Nama</th>
+                                <th>No WhatsApp</th>
                                 <th>Email</th>
                                 <th>Aksi</th>
                             </tr>
@@ -34,10 +34,7 @@
                             @foreach ($data as $key)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        <img src="{{ Storage::url('public/profile/') . $key->image }}" width="100"
-                                            height="100" class="rounded-circle mx-auto d-block" alt="{{ $key->name }}">
-                                    </td>
+                                    <td>{{ $key->nowa }}</td>
                                     <td>{{ $key->name }}</td>
                                     <td>{{ $key->email }}</td>
                                     <td>

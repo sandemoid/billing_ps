@@ -28,7 +28,6 @@
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-6 col-sm-12">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
@@ -38,7 +37,7 @@
                             <div class="col">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Silahkan Daftar, Gamers</h1>
                                     </div>
                                     <form action="{{ route('register') }}" method="POST" class="user">
                                         @csrf
@@ -46,7 +45,7 @@
                                             <input type="text"
                                                 class="form-control form-control-user @error('email') is-invalid @enderror"
                                                 id="name" name="name" aria-describedby="emailHelp"
-                                                placeholder="Enter Full Name..." value="{{ old('name') }}">
+                                                placeholder="Masukan Full Name..." value="{{ old('name') }}">
                                             @error('email')
                                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                                     {{ $message }}</div>
@@ -56,8 +55,18 @@
                                             <input type="email"
                                                 class="form-control form-control-user @error('email') is-invalid @enderror"
                                                 id="email" name="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." value="{{ old('email') }}">
+                                                placeholder="Masukan Email Address..." value="{{ old('email') }}">
                                             @error('email')
+                                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                    {{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text"
+                                                class="form-control form-control-user @error('nowa') is-invalid @enderror"
+                                                id="nowa" name="nowa" aria-describedby="nowaHelp"
+                                                placeholder="Masukan nomor whatsapp" value="{{ old('nowa') }}">
+                                            @error('nowa')
                                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                                     {{ $message }}</div>
                                             @enderror

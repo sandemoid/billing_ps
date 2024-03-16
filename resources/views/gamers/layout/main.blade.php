@@ -12,6 +12,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('/') }}assets/css/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -43,9 +44,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li
-                class="nav-item {{ request()->segment(1) == '' || request()->segment(1) == 'dashboard' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('dashboard') }}">
+            <li class="nav-item {{ request()->segment(1) == '' || request()->segment(1) == 'gamers' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('gamers') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,47 +57,22 @@
             <div class="sidebar-heading">
                 Main
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            {{-- <li class="nav-item ">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li> --}}
-
-            <!-- Divider -->
-            {{-- <hr class="sidebar-divider"> --}}
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item {{ request()->segment(1) == 'user' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('user') }}">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>User</span></a>
-            </li>
             <li
-                class="nav-item {{ request()->segment(1) == '' || request()->segment(1) == 'pengaturan' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('pengaturan') }}">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Pengaturan</span></a>
+                class="nav-item {{ request()->segment(1) == '' || request()->segment(1) == 'transaksi' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('transaksi') }}">
+                    <i class="fas fa-fw fa-cash-register"></i>
+                    <span>Riwayat Transaksi</span></a>
             </li>
 
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -137,7 +112,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ Route('profile.edit') }}">
+                                <a class="dropdown-item" href="{{ Route('pengguna.edit') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil
                                 </a>
@@ -219,7 +194,7 @@
     <script src="{{ asset('/') }}assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('/') }}assets/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('/') }}assets/js/sb-admin-2.js"></script>
 
     @stack('custom_scripts')
 

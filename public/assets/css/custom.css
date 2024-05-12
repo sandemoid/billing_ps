@@ -1,13 +1,13 @@
-.form_password_delete{
+.form_password_delete {
     margin: 3px;
 }
-.img_monitor{
+.img_monitor {
     width: 100%;
     position: relative;
     display: inline-block;
 }
 
-.text_monitor{
+.text_monitor {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -40,7 +40,11 @@
         display: block !important;
     }
 }
-.card-header{
-    display: flex !important; 
+.card-header {
+    display: flex !important;
     justify-content: space-between !important;
+}
+.jadwal > p {
+    font-weight: 700;
+    margin-top: 10px;
 }

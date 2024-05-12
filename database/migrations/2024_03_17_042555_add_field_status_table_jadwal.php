@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('role', 'role_id');
+        Schema::table('jadwal_ps', function (Blueprint $table) {
+            $table->string('status')->after('waktu_tutup');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('role', 'role_id');
+        Schema::table('jadwal_ps', function (Blueprint $table) {
+            $table->dropColumn('status');
         });
     }
 };

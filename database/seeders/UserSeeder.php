@@ -17,8 +17,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Sandi Maulidika',
             'email' => 'admin@gmail.com',
+            'nowa' => '08530000000',
             'password' => Hash::make('admin'),
-            'role' => 'admin',
+            'role_id' => '1',
+            'is_admin' => '1'
         ]);
     }
 }

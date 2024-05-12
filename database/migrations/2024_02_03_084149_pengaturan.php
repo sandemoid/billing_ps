@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengaturan', function (Blueprint $table) {
-            $table->increments('pengaturan_id')->primary;
-            $table->index(['pengaturan_id', 'key']);
+            $table->id();
             $table->string('key')->unique();
             $table->longText('value')->nullable();
             $table->timestamps();

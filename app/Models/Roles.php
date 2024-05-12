@@ -10,9 +10,6 @@ class Roles extends Model
     use HasFactory;
 
     protected $table = 'roles';
-    protected $primaryKey = 'id_roles';
+    protected $primaryKey = 'id';
     protected $fillable = ['name_role'];
-
-    // Tidak menggunakan kolom created_at dan updated_at
-    public $timestamps = false;
 }

@@ -50,7 +50,7 @@ class AuthController extends Controller
             $cookie = cookie('user_id', $user, 60 * 24 * 3);
             $redirectRoute = $user->role_id == 3 ? RouteServiceProvider::GAMERS : RouteServiceProvider::HOME;
 
-            return redirect()->intended($redirectRoute)->withCookie($cookie)->with('success', 'You successfully logged in');
+            return redirect()->intended($redirectRoute)->withCookie($cookie)->with('success', 'Kamu berhasil login');
         }
 
         throw ValidationException::withMessages([
@@ -66,7 +66,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'You have been logged out');
+        return redirect()->route('login')->with('success', 'Kamu berhasil keluar sesi');
     }
 
     public function register()

@@ -35,7 +35,6 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                {{-- <div class="sidebar-brand-text mx-3">{{ pengaturan('title') }}</div> --}}
                 <div class="sidebar-brand-text mx-3">{{ pengaturan('title') }}</div>
             </a>
 
@@ -88,6 +87,11 @@
                 <a class="nav-link" href="{{ url('pengaturan') }}">
                     <i class="fa-solid fa-gear"></i>
                     <span>Pengaturan</span></a>
+            </li>
+            <li class="nav-item {{ request()->segment(1) == '' || request()->segment(1) == 'roles' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('roles') }}">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Kelola Roles</span></a>
             </li>
 
 

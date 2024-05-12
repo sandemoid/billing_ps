@@ -68,15 +68,16 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmation Delete Data</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi hapus data</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">Sure you want to delete the name data <b>{{ $key->name }}</b>?</div>
+                        <div class="modal-body">Yakin kamu ingin menghapus data dengan nama <b>{{ $key->name }}</b> ?
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Yes, i am sure</button>
+                            <button type="submit" class="btn btn-danger">Iya, saya yakin</button>
                         </div>
                     </form>
                 </div>

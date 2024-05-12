@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwal_ps', function (Blueprint $table) {
-            $table->increments('jadwal_id')->primary;
+            $table->id();
             $table->string('hari');
             $table->time('waktu_buka');
             $table->time('waktu_tutup');

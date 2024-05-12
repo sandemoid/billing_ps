@@ -13,7 +13,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'store'])->name('register');
+    Route::post('/register', [AuthController::class, 'store'])->name('proses.register');
 
     Route::get('forgot-password', [PasswordResetController::class, 'index'])
         ->name('password.request');

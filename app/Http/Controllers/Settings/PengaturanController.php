@@ -16,24 +16,22 @@ class PengaturanController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = [
             'title' => Pengaturan::where('key', 'title')->first(),
         ];
-        $data = Jadwal::all();
+        $data['jadwal'] = Jadwal::all();
         return view('pengaturan', $data);
     }
 
     public function update_jadwal(Request $request): RedirectResponse
     {
         $data = [
-            'hari' => $request->hari,
             'waktu_buka' => $request->waktu_buka,
-            'waktu_tutup' => $request->waktu_tutup
+            'waktu_tutup' => $request->waktu_tutup,
+            'status' => $request->status
         ];
 
         DB::table('jadwal_ps')->insert($data);

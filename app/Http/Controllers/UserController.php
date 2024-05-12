@@ -11,14 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         $data  = User::get();
-        return view('user.index', compact('data'));
+        return view('user.user', compact('data'));
     }
 
     public function create()
@@ -103,7 +99,7 @@ class UserController extends Controller
     public function destroy(User $user, $id)
     {
         // Temukan pengguna
-        $data = User::find($id);
+        $data = User::findOrFail($id);
 
         if ($data) {
             // Hapus foto sebelum menghapus pengguna
@@ -118,7 +114,6 @@ class UserController extends Controller
 
             return redirect()->route('user')->with('success', 'Has been deleted');
         }
-
         return redirect()->route('user')->with('failed', 'User not found');
     }
 }

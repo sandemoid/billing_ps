@@ -1,9 +1,12 @@
 @extends('layout.main')
 @section('content')
+    @push('custom_style')
+        <link href="{{ asset('/') }}assets/css/custom.css" rel="stylesheet">
+    @endpush
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('Pengaturan Aplikasi') }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">{{ __('Pengaturan & Penjadwalan') }}</h1>
         </div>
 
         <!-- Content Row -->
@@ -26,7 +29,6 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a onclick="window.location='{{ URL('user') }}'" class="btn btn-light">Back</a>
                         </form>
                     </div>
                 </div>
@@ -38,40 +40,45 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="hari">Nama Hari</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="hari" name="hari" placeholder="Masukan Nama Hari"
-                                    value="{{ @old('hari', $data->hari) }}">
-                                @error('hari')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="waktu_buka">Waktu Buka</label>
-                                <input type="date" class="form-control @error('name') is-invalid @enderror"
-                                    id="waktu_buka" name="waktu_buka" placeholder="Masukan Waktu Buka"
-                                    value="{{ @old('waktu_buka', $data->waktu_buka) }}">
-                                @error('waktu_buka')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="waktu_tutup">Waktu tutup</label>
-                                <input type="date" class="form-control @error('name') is-invalid @enderror"
-                                    id="waktu_tutup" name="waktu_tutup" placeholder="Masukan Waktu Buka"
-                                    value="{{ @old('waktu_tutup', $data->waktu_tutup) }}">
-                                @error('waktu_tutup')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <div class="row">
+                                    @foreach ($jadwal as $value)
+                                        <div class="col-6">
+                                            <div class="jadwal">
+                                                <p>Hari {{ $value->hari }}</p>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="waktu_buka">Waktu Buka</label>
+                                                        <input type="time"
+                                                            class="form-control @error('waktu_buka') is-invalid @enderror"
+                                                            id="waktu_buka" name="waktu_buka"
+                                                            placeholder="Masukan Waktu Buka"
+                                                            value="{{ @old('waktu_buka', $value->waktu_buka) }}">
+                                                        @error('waktu_buka')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="waktu_tutup">Waktu Tutup</label>
+                                                        <input type="time"
+                                                            class="form-control @error('waktu_tutup') is-invalid @enderror"
+                                                            id="waktu_tutup" name="waktu_tutup"
+                                                            placeholder="Masukan Waktu Tutup"
+                                                            value="{{ @old('waktu_tutup', $value->waktu_tutup) }}">
+                                                        @error('waktu_tutup')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a onclick="window.location='{{ URL('user') }}'" class="btn btn-light">Back</a>
                         </form>
                     </div>
                 </div>

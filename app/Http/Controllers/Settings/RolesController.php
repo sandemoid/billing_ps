@@ -31,7 +31,7 @@ class RolesController extends Controller
 
         Roles::create($roleData);
 
-        return redirect()->route('roles')->with('success', 'Roles with the name ' . $request->name_role . ' has been added');
+        return redirect()->route('roles')->with('success', 'Role dengan nama pengguna ' . $request->name_role . ' telah ditambahkan');
     }
 
     public function update(Request $request, $id)
@@ -48,7 +48,7 @@ class RolesController extends Controller
 
         Roles::where('id', $id)->update($data);
 
-        return redirect()->route('roles')->with('success', 'Roles with the name ' . $request->name_role . ' has been updated');
+        return redirect()->route('roles')->with('success', 'Role dengan nama pengguna ' . $request->name_role . ' telah diperbarui');
     }
 
     public function destroy(Roles $role, $id)

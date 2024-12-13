@@ -17,7 +17,7 @@ Route::middleware(['auth', 'cekrole:1,2'])->prefix('dashboard')->group(function 
         Route::post('/store', [UserController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
         Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
     });
 
     // Profile Routes
